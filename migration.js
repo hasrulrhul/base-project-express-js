@@ -1,12 +1,13 @@
 var mysql = require('mysql');
 var migration = require('mysql-migrations');
+require('dotenv/config')
 
 var connection = mysql.createPool({
    connectionLimit: 10,
-   host: 'localhost',
-   user: 'dev',
-   password: 'dev123',
-   database: 'expressjs'
+   host : process.env.DB_HOST,
+   user : process.env.DB_USER,
+   password : process.env.DB_PASSWORD,
+   database : process.env.DB_DATABASE
 });
 
 function executeQuery(sql, callback) {
